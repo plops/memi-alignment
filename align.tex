@@ -3,6 +3,7 @@
 \title{Preliminary Installation Manual for MEMI system}
 \author{Martin Kielhorn}
 \begin{document}
+\maketitle
 \section{Introduction}
 This document contains instructions for the setup and the alignment of
 the MEMI system. It can also serve as a basic introduction to the
@@ -112,5 +113,35 @@ camera. Any objective can be used.
 \qq{Fine adjustment of MMA image position} Move in a $10\times$
 objective with phase ring. Put screen over objective. Display a ring
 on the MMA align both rings by slightly tilting the LCoS.
+
+\section{Electronic installation}
+As MMA images are needed during the alignment this installation has to
+be done while the system is aligned.
+
+\subsection{LCoS}
+Attach digital video from computer to LCoS controller. Verify that
+resolution is set to $1280\times 1024$ at \unit[60]{Hz}. Connect
+ADUM1400 board (this chip converts the voltages from \unit[3.3]{V} to
+TTL levels and should protect the LCoS electronics) to LCoS
+controller.  The RED-ENABLE signal can be obtained from a
+connector. However for the VSYNC signal a cable needs to be soldered
+to a test point on the LCoS controller.
+
+Verify both signals on an oscilloscope. Route RED-ENABLE into the AND
+gate and connect to laser. Connect VSYNC to TRIGGER-IN of the
+camera. Connect FIRE of the camera to the second input of the AND
+gate.
+
+\subsection{MMA}
+Attach network cable to MMA. It is probably a good idea to always have
+a direct network connection between the lab computer and the MMA.
+Connect the cameras FIRE output to the MMAs START-MMA input. The MMAs
+deflection time can be verified on the output USER-READY.
+
+\subsection{Oscilloscope}
+Show the cameras FIRE signal and the MMAs USER-READY so that the
+synchronization of the system can be always verified. Ideally the
+signal output of the AND gate that triggers the laser should be shown
+as well.
 
 \end{document}
